@@ -223,9 +223,8 @@ class Query:
         try:
             (target_comp, target_title, target_start,
              target_end) = self.get_target_company_info(user['pastPositions'])
-            print("-----")
             current_company = user['currentPositions'][0]['companyName'] if user['currentPositions'] else 'no current position'
-            current_role = user['currentPositions'][0]['title']
+            current_role = user['currentPositions'][0]['title'] if user['currentPositions'] else 'no current role'
 
             if not self.career_filter(target_comp, target_title, current_role):
                 print('Dropped ', name, ' Current Role:', current_role, " Target Comp: ",
