@@ -9,7 +9,7 @@ import requests
 LINK_PREFIX = 'https://www.linkedin.com/sales/people/'
 SLEEP = 10
 
-BLANK_PROFILEf_PIC = 'https://writedirection.com/website/wp-content/uploads/2016/09/blank-profile-picture-973460_960_720.png'
+BLANK_PROFILE_PIC = 'https://writedirection.com/website/wp-content/uploads/2016/09/blank-profile-picture-973460_960_720.png'
 NON_TARGET = ['clerk', 'accounting', 'writer', 'assistant', 'operations', 'picker', 'sourcer', 'vendor', 'ambassador', 'associate', 'representative', 'coordinator', 'community', 'administrator', 'quality',
               'contract', 'driver', 'account executive', 'deliverer', 'account manager', 'advisor', 'analyst', 'intern',
               'consultant', 'contract', 'adviser']
@@ -223,8 +223,8 @@ class Query:
         try:
             (target_comp, target_title, target_start,
              target_end) = self.get_target_company_info(user['pastPositions'])
-            print("-----" + user['currentPositions'])
-            current_company = user['currentPositions'][0]['companyName'] if user['currentPositions'] else return current_role = user['currentPositions'][0]['title']
+            current_company = user['currentPositions'][0]['companyName'] if user['currentPositions'] else 'no current position'
+            current_role = user['currentPositions'][0]['title'] if user['currentPositions'] else 'no current role'
 
             if not self.career_filter(target_comp, target_title, current_role):
                 print('Dropped ', name, ' Current Role:', current_role, " Target Comp: ",
